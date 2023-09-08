@@ -7,21 +7,20 @@ from pydantic import BaseModel
 
 
 class Features(BaseModel):
-    bhk: int
-    size: int
-    floor: str
-    area_type: str
-    city: str
-    furnishing_status: str
-    tenant_preferred: str
-    bathroom: int
-    point_of_contact: str
+    season: int
+    holiday: int
+    workingday: int
+    weather: int
+    temp: int
+    atemp: int
+    humidity: int
+    windspeed: int
+    # count: int
 
-
-bento_model = bentoml.sklearn.get("house_rent:latest")
+bento_model = bentoml.sklearn.get("bike_sharing:latest")
 model_runner = bento_model.to_runner()
 
-svc = bentoml.Service("rent_house_regressor", runners=[model_runner])
+svc = bentoml.Service("bike_sharing_regressor", runners=[model_runner])
 
 
 @svc.api(input=JSON(pydantic_model=Features), output=NumpyNdarray())
