@@ -3,7 +3,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
 bentoml = "==1.0.20"
 scikit-learn = "==1.2.2"
