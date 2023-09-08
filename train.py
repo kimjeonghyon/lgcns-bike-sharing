@@ -35,7 +35,7 @@ warnings.filterwarnings(action="ignore")
 if __name__ == "__main__":
     train_df = pd.read_csv(os.path.join(DATA_PATH, "bike_sharing_train.csv"))
 
-    _X = train_df.drop(["datetime"], axis=1)
+    _X = train_df.drop(["datetime", "count"], axis=1)
     y = np.log1p(train_df["count"])
     
     X = preprocess_pipeline.fit_transform(X=_X, y=y)
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     # Set experiment name for mlflow
     logger.info("Setting a new experiment for MLflow...")
-    experiment_name = "new_experiment_with_log"
+    experiment_name = "new_experiment_2nd"
     mlflow.set_experiment(experiment_name=experiment_name)
     mlflow.set_tracking_uri("./mlruns")
 
